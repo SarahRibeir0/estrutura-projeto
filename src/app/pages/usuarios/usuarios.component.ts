@@ -1,41 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTableModule } from 'ng-zorro-antd/table';
 
 interface Person {
   key: string;
   name: string;
-  age: number;
-  address: string;
+  login: string;
+  perfil: string;
 }
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [NzDividerModule, NzTableModule, NzButtonModule ],
+  imports: [NzDividerModule, NzTableModule, NzButtonModule, NzIconModule ],
   templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.css'],
+  styleUrls: ['./usuarios.component.scss'],
 })
 export class UsuariosComponent implements OnInit {
   listOfData: Person[] = [
     {
       key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
+      name: 'João Silva',
+      login: 'joão.silva',
+      perfil: 'Motorista',
     },
     {
       key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
+      name: 'Maria Santos',
+      login: 'maria.santos',
+      perfil: 'Administrador',
     },
     {
       key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
+      name: 'Carlos Oliveira',
+      login: 'carlos.oliveira',
+      perfil: 'Administrador',
+    },
+    {
+      key: '3',
+      name: 'Ana Costa',
+      login: 'ana.costa',
+      perfil: 'Administrador',
+    },
+    {
+      key: '3',
+      name: 'Roberto Lima',
+      login: 'roberto.lima',
+      perfil: 'Motorista',
     },
   ];
 
