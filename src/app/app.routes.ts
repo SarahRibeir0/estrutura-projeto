@@ -1,7 +1,6 @@
-import { Layout } from './layout/layout.component';
 import { Routes } from '@angular/router';
+import { Layout } from './layout/layout.component';
 import { HomeComponent } from './pages/home/home.component';
-import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 export const routes: Routes = [
   {
@@ -9,7 +8,9 @@ export const routes: Routes = [
     component: Layout,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'usuarios', component: UsuariosComponent },
+      { path: 'usuarios',
+        loadChildren: () => import('./pages/usuarios/usuarios.routes').then(m => m.usuariosRoutes)
+      },
     ]
   },
   { path: '**', redirectTo: '' }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -53,7 +54,12 @@ export class UsuariosComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  cadastrarUsuario(){
+    this.router.navigate(['/usuarios/cadastrar']);
+  }
 }
