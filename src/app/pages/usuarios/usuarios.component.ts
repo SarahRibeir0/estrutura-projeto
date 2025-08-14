@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -14,7 +15,7 @@ interface Person {
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [NzDividerModule, NzTableModule, NzButtonModule, NzIconModule ],
+  imports: [CommonModule, NzDividerModule, NzTableModule, NzButtonModule, NzIconModule],
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss'],
 })

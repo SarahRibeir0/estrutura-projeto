@@ -1,6 +1,14 @@
-<h1>Usuários</h1>
-<div class="btn-cadastro">
-  <button nz-button nzType="primary">Cadastrar Usuário</button>
+<div class="usuario">
+  <div>
+    <h2>Usuários</h2>
+    <p>Gerencie os usuáiros do sistema</p>
+    <div class="btn-cadastro">
+      <button nz-button nzType="primary">
+        <span nz-icon nzType="plus" nzTheme="outline"></span>
+        Cadastrar Usuário
+      </button>
+    </div>
+  </div>
 </div>
 
 <div class="table">
@@ -21,11 +29,10 @@
         <td>{{ data.perfil }}</td>
         <td>
           <div class="btn-acoes">
-            <button nz-button nzType="default" nzShape="circle">
+            <button nz-button nzType="default">
               <nz-icon nzType="edit" nzTheme="outline" />
             </button>
-    
-            <button nz-button nzType="primary" nzDanger nzShape="circle">
+            <button nz-button nzType="primary" nzDanger>
               <nz-icon nzType="delete" nzTheme="outline" />
             </button>
           </div>
