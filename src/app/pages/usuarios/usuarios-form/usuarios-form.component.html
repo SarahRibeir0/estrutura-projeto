@@ -1,3 +1,42 @@
-<p>
-  usuarios-form works!
-</p>
+<div class="usuario-form">
+  <div>
+    <h2>Cadastrar Usuário</h2>
+  </div>
+</div>
+
+<nz-card [nzTitle]="'Cadastrar Usuário'">
+  <form nz-form [formGroup]="formUsuario" nzLayout="vertical">
+    <div nz-row [nzGutter]="[16, 16]">
+      <nz-form-item nz-col [nzSpan]="6">
+        <nz-form-label>Nome</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="nome" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item nz-col [nzSpan]="6">
+        <nz-form-label>Login</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="login" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
+        <nz-form-label>Senha</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="senha" type="password" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
+        <nz-form-label>Perfil</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="perfil" />
+        </nz-form-control>
+      </nz-form-item>
+      <div>
+        <button nz-button nzType="primary" (click)="salvar()">Cadastrar</button>
+      </div>
+    </div>
+  </form>
+</nz-card>
