@@ -15,6 +15,7 @@ import {
   NzFormLabelComponent,
 } from 'ng-zorro-antd/form';
 import { NzColDirective, NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 
@@ -32,6 +33,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzGridModule,
     NzButtonModule,
     NzSelectModule,
+    NzIconModule
   ],
   templateUrl: './usuarios-form.component.html',
   styleUrls: ['./usuarios-form.component.scss'],
