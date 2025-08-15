@@ -18,6 +18,7 @@ import { NzColDirective, NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @Component({
   selector: 'app-usuarios-form',
@@ -33,13 +34,15 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzGridModule,
     NzButtonModule,
     NzSelectModule,
-    NzIconModule
+    NzIconModule,
+    NzSpinModule
   ],
   templateUrl: './usuarios-form.component.html',
   styleUrls: ['./usuarios-form.component.scss'],
 })
 export class UsuariosFormComponent implements OnInit {
   formUsuario!: UntypedFormGroup;
+  isLoading: boolean = false;
 
   constructor(private router: Router) {}
 
@@ -61,12 +64,16 @@ export class UsuariosFormComponent implements OnInit {
   }
 
   loadUsuarios(usuario: any) {
-    this.formUsuario.patchValue({
-      nome: usuario.nome,
-      login: usuario.login,
-      perfil: usuario.perfil,
-      senha: usuario.senha,
-    });
+        this.isLoading = true;
+        setTimeout(() => {
+          this.formUsuario.patchValue({
+            nome: usuario.nome,
+            login: usuario.login,
+            perfil: usuario.perfil,
+            senha: usuario.senha,
+          });
+          this.isLoading = false;
+        }, 1000);
   }
 
   salvar() {
