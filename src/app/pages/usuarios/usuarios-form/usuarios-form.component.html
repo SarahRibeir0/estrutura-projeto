@@ -49,6 +49,35 @@
             </nz-form-control>
           </nz-form-item>
         </div>
+        @if(formUsuario.value.perfil === 'Motorista'){
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
+          <nz-form-item>
+            <nz-form-label>CNH</nz-form-label>
+            <nz-form-control>
+              <input nz-input formControlName="cnh" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
+          <nz-form-item>
+            <nz-form-label>Categoria</nz-form-label>
+            <nz-form-control>
+              <input nz-input formControlName="categoria" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="6">
+          <nz-form-item>
+            <nz-form-label>Validade</nz-form-label>
+            <nz-form-control>
+              <nz-date-picker
+                nzFormat="dd-MM-yyyy"
+                formControlName="validade"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        }
       </div>
       <div class="btn-cadastro">
         <button nz-button nzType="default" (click)="btnCancelar()">

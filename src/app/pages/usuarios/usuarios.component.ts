@@ -14,6 +14,9 @@ interface Person {
   login: string;
   perfil: string;
   senha: string;
+  cnh: string;
+  categoria: string;
+  validade: string;
 }
 
 @Component({
@@ -39,6 +42,9 @@ export class UsuariosComponent implements OnInit {
       login: 'joão.silva',
       perfil: 'Motorista',
       senha: '********',
+      cnh: '12345678900',
+      categoria: 'B',
+      validade: '2025-12-31',
     },
     {
       id: 2,
@@ -46,6 +52,9 @@ export class UsuariosComponent implements OnInit {
       login: 'maria.santos',
       perfil: 'Administrador',
       senha: '********',
+      cnh: '',
+      categoria: '',
+      validade: '',
     },
     {
       id: 3,
@@ -53,6 +62,9 @@ export class UsuariosComponent implements OnInit {
       login: 'carlos.oliveira',
       perfil: 'Administrador',
       senha: '********',
+      cnh: '',
+      categoria: '',
+      validade: '',
     },
     {
       id: 4,
@@ -60,6 +72,9 @@ export class UsuariosComponent implements OnInit {
       login: 'ana.costa',
       perfil: 'Administrador',
       senha: '********',
+      cnh: '',
+      categoria: '',
+      validade: '',
     },
     {
       id: 5,
@@ -67,6 +82,9 @@ export class UsuariosComponent implements OnInit {
       login: 'roberto.lima',
       perfil: 'Motorista',
       senha: '********',
+      cnh: '12345678900',
+      categoria: 'C',
+      validade: '2025-12-31',
     },
   ];
 

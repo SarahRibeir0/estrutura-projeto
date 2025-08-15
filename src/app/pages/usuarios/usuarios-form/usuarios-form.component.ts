@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import {
   NzFormControlComponent,
   NzFormItemComponent,
@@ -35,7 +36,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     NzButtonModule,
     NzSelectModule,
     NzIconModule,
-    NzSpinModule
+    NzSpinModule,
+    NzDatePickerModule,
   ],
   templateUrl: './usuarios-form.component.html',
   styleUrls: ['./usuarios-form.component.scss'],
@@ -53,10 +55,10 @@ export class UsuariosFormComponent implements OnInit {
     if (usuario) {
       this.titleCard = 'Editar Usuário';
       this.loadUsuarios(usuario);
-    }else{
+    } else {
       this.titleCard = 'Cadastrar Usuário';
-
     }
+    this.perfilMotorista();
   }
 
   private initForm() {
@@ -65,26 +67,33 @@ export class UsuariosFormComponent implements OnInit {
       login: new UntypedFormControl(null, [Validators.required]),
       perfil: new UntypedFormControl(null, [Validators.required]),
       senha: new UntypedFormControl(null, [Validators.required]),
+      cnh: new UntypedFormControl(null, [Validators.required]),
+      categoria: new UntypedFormControl(null, [Validators.required]),
+      validade: new UntypedFormControl(null, [Validators.required]),
     });
   }
 
   loadUsuarios(usuario: any) {
-        this.isLoading = true;
-        setTimeout(() => {
-          this.formUsuario.patchValue({
-            nome: usuario.nome,
-            login: usuario.login,
-            perfil: usuario.perfil,
-            senha: usuario.senha,
-          });
-          this.isLoading = false;
-        }, 1000);
+    this.isLoading = true;
+    setTimeout(() => {
+      this.formUsuario.patchValue({
+        nome: usuario.nome,
+        login: usuario.login,
+        perfil: usuario.perfil,
+        senha: usuario.senha,
+        cnh: usuario.cnh,
+        categoria: usuario.categoria,
+        validade: usuario.validade,
+      });
+      this.isLoading = false;
+    }, 1000);
   }
 
   salvar() {
     if (this.formUsuario.valid) {
       const usuario = this.formUsuario.value;
       console.log('Usuário cadastrado:', usuario);
+      this.perfilMotorista();
     } else {
       console.log('Formulário inválido');
       Object.values(this.formUsuario.controls).forEach((control) => {
@@ -97,5 +106,21 @@ export class UsuariosFormComponent implements OnInit {
 
   btnCancelar() {
     this.router.navigate(['/usuarios']);
+  }
+
+  onChange(result: Date): void {
+    console.log('onChange: ', result);
+  }
+
+  perfilMotorista() {
+    this.formUsuario.get('perfil')?.valueChanges.subscribe((valor) => {
+      if (valor === 'Motorista') {
+        this.formUsuario.patchValue({
+          cnh: null,
+          categoria: null,
+          validade: null,
+        });
+      }
+    });
   }
 }
