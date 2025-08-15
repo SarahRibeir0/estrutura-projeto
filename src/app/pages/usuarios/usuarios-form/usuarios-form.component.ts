@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   ReactiveFormsModule,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
-  Validators,
+  Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import {
@@ -15,6 +16,7 @@ import {
 } from 'ng-zorro-antd/form';
 import { NzColDirective, NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @Component({
   selector: 'app-usuarios-form',
@@ -28,7 +30,9 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     NzInputModule,
     NzColDirective,
     NzGridModule,
-    NzButtonModule
+    NzButtonModule,
+    NzSelectModule,
+
   ],
   templateUrl: './usuarios-form.component.html',
   styleUrls: ['./usuarios-form.component.scss'],
@@ -36,7 +40,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 export class UsuariosFormComponent implements OnInit {
   formUsuario!: UntypedFormGroup;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.initForm();
@@ -51,12 +55,21 @@ export class UsuariosFormComponent implements OnInit {
     });
   }
 
-  salvar(){
+  salvar() {
     if (this.formUsuario.valid) {
       const usuario = this.formUsuario.value;
       console.log('Usuário cadastrado:', usuario);
     } else {
       console.log('Formulário inválido');
+      Object.values(this.formUsuario.controls).forEach(control => {
+      control.markAsTouched();
+      control.updateValueAndValidity();
+    });
+    return;
     }
+  }
+
+  btnCancelar() {
+    this.router.navigate(['/usuarios']);
   }
 }
