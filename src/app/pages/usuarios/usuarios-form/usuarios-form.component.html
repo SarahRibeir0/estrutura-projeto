@@ -1,11 +1,5 @@
 <nz-spin [nzSpinning]="isLoading">
-  <div class="usuario-form">
-    <div>
-      <h2>Cadastrar Usuário</h2>
-    </div>
-  </div>
-
-  <nz-card [nzTitle]="'Cadastrar Usuário'">
+  <nz-card [nzTitle]="this.titleCard">
     <form nz-form [formGroup]="formUsuario" nzLayout="vertical">
       <div nz-row [nzGutter]="[16, 16]">
         <div nz-col [nzSpan]="6">

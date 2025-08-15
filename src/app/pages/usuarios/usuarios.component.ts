@@ -9,7 +9,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTooltipModule } from 'ng-zorro-antd/tooltip';
 
 interface Person {
-  key: number;
+  id: number;
   nome: string;
   login: string;
   perfil: string;
@@ -34,35 +34,35 @@ interface Person {
 export class UsuariosComponent implements OnInit {
   listOfData: Person[] = [
     {
-      key: 1,
+      id: 1,
       nome: 'João Silva',
       login: 'joão.silva',
       perfil: 'Motorista',
       senha: '********',
     },
     {
-      key: 2,
+      id: 2,
       nome: 'Maria Santos',
       login: 'maria.santos',
       perfil: 'Administrador',
       senha: '********',
     },
     {
-      key: 3,
+      id: 3,
       nome: 'Carlos Oliveira',
       login: 'carlos.oliveira',
       perfil: 'Administrador',
       senha: '********',
     },
     {
-      key: 4,
+      id: 4,
       nome: 'Ana Costa',
       login: 'ana.costa',
       perfil: 'Administrador',
       senha: '********',
     },
     {
-      key: 5,
+      id: 5,
       nome: 'Roberto Lima',
       login: 'roberto.lima',
       perfil: 'Motorista',
@@ -80,7 +80,7 @@ export class UsuariosComponent implements OnInit {
 
   editUsuario(usuario: Person) {
     console.log(usuario);
-    this.router.navigate(['/usuarios/editar/', usuario.key], {
+    this.router.navigate(['/usuarios/editar/', usuario.id], {
       state: { usuario },
     });
   }

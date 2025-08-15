@@ -43,6 +43,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 export class UsuariosFormComponent implements OnInit {
   formUsuario!: UntypedFormGroup;
   isLoading: boolean = false;
+  titleCard: string = '';
 
   constructor(private router: Router) {}
 
@@ -50,7 +51,11 @@ export class UsuariosFormComponent implements OnInit {
     this.initForm();
     const usuario = history.state.usuario;
     if (usuario) {
+      this.titleCard = 'Editar Usuário';
       this.loadUsuarios(usuario);
+    }else{
+      this.titleCard = 'Cadastrar Usuário';
+
     }
   }
 
