@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   ReactiveFormsModule,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -32,7 +32,6 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzGridModule,
     NzButtonModule,
     NzSelectModule,
-
   ],
   templateUrl: './usuarios-form.component.html',
   styleUrls: ['./usuarios-form.component.scss'],
@@ -44,6 +43,10 @@ export class UsuariosFormComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    const usuario = history.state.usuario;
+    if (usuario) {
+      this.loadUsuarios(usuario);
+    }
   }
 
   private initForm() {
@@ -55,17 +58,26 @@ export class UsuariosFormComponent implements OnInit {
     });
   }
 
+  loadUsuarios(usuario: any) {
+    this.formUsuario.patchValue({
+      nome: usuario.nome,
+      login: usuario.login,
+      perfil: usuario.perfil,
+      senha: usuario.senha,
+    });
+  }
+
   salvar() {
     if (this.formUsuario.valid) {
       const usuario = this.formUsuario.value;
       console.log('Usuário cadastrado:', usuario);
     } else {
       console.log('Formulário inválido');
-      Object.values(this.formUsuario.controls).forEach(control => {
-      control.markAsTouched();
-      control.updateValueAndValidity();
-    });
-    return;
+      Object.values(this.formUsuario.controls).forEach((control) => {
+        control.markAsTouched();
+        control.updateValueAndValidity();
+      });
+      return;
     }
   }
 

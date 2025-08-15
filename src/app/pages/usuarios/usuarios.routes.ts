@@ -12,7 +12,7 @@ export const usuariosRoutes: Routes = [
     component: UsuariosFormComponent,
   },
   {
-    path: ':id',
+    path: 'editar/:id',
     component: UsuariosFormComponent,
   },
 ];
